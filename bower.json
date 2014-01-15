@@ -1,0 +1,27 @@
+{
+  "name": "berapaMingguGueHidup",
+  "version": "0.0.0",
+  "homepage": "https://github.com/pyk/toool",
+  "authors": [
+    "Bayu Aldi Yansyah <bayualdiyansyah@gmail.com>"
+  ],
+  "description": "how much week you spend on your life",
+  "main": "index.html",
+  "keywords": [
+    "@pyk",
+    "bayu"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "~3.0.3",
+    "angular": "~1.2.8"
+  }
+}
