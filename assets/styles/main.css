@@ -909,6 +909,17 @@ p.change-year {
   color: #09805B;
 }
 
+.cari-tahu-lagi {
+  padding-top: 20px;
+}
+
+.cari-tahu-lagi a {
+  padding: 10px 20px 10px 20px;
+  color: #09805B;
+  border: 1px solid #09805B;
+  border-radius: 100px;
+}
+
 .copyright {
   padding: 0;
   padding-top: 10px;
