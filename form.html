@@ -1,0 +1,63 @@
+<div ng-cotroller="FormCtrl">
+  <div class="container calculator">
+    <header>
+      <h1>Sudah berapa lama gue hidup?</h1>
+    </header>
+    
+    <section>
+      <p>gue lahir pada:</p>
+      <p class="big">
+        <a href="#" data-toggle="modal" data-target="#changeDate">
+          {{date}}
+        </a>/
+        <a href="#" data-toggle="modal" data-target="#chooseMonth">
+          {{month.id}}
+        </a>/
+        <a href="#" data-toggle="modal" data-target="#changeYear">
+          {{ year }}
+        </a>
+      </p>
+      <span>* klik untuk mengganti tanggal, bulan dan tahun lahir</span>
+      <p class="cari-tahu"><a href="#/{{date}}/{{month.en}}/{{year}}">cari tahu</a></p>
+    </section>
+  </div>
+
+  <div class="modal fade" id="changeDate" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="container">
+      <section>
+          <form parsley-validate parsley-show-errors>
+            <p class="change-date">
+            <input class="input-number" ng-model="date"/>
+            <a href="#" data-dismiss="modal"></a>
+            </p>
+          </form>
+      </section>
+    </div>
+  </div>
+
+  <div class="modal fade" id="chooseMonth" tabindex="-1" role="dialog" 
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="container">
+      <div class="row">
+          <a href="#" data-dismiss="modal"class="month"
+             ng-repeat="month in months" ng-click="chooseMonth($index)">
+            <p>{{ month.id }}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <div class="modal fade" id="changeYear" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="container">
+      <section>
+        <p class="change-year">
+          <input type="text" ng-model="year">
+          <a href="#" data-dismiss="modal"></a>
+        </p>
+      </section>
+    </div>
+  </div>
+</div>
