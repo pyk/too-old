@@ -904,20 +904,26 @@ p.change-year {
 }
 
 .result > h3 {
-  font-size: 3.3em;
+  font-size: 2em;
   font-weight: 300;
+  line-height: 1.5;
   color: #09805B;
 }
 
 .cari-tahu-lagi {
   padding-top: 20px;
+  font-size: 1em;
 }
 
 .cari-tahu-lagi a {
   padding: 10px 20px 10px 20px;
+  font-weight: 400;
   color: #09805B;
-  border: 1px solid #09805B;
-  border-radius: 100px;
+  border: 2px solid #09805B;
+}
+
+.left-arrow {
+  padding-right: 10px;
 }
 
 .copyright {
