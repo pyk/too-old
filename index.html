@@ -1,16 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
   <head>
-    <title>Demo content for toool</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <meta name='author' content='Bayu Aldi Yansyah, bayualdiyansyah@gmail.com'>
-    <meta name='copyright' content='Bayu Aldi Yansyah'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>sudah berapa lama gue hidup? | too old - by Bayu Aldi Yansyah</title>
+    <meta name="description" content="Simple apps to measure how old are you now with precisly. built using AngularJS aand Bootstrap">
+    <meta name="keywords" content="bayu aldi yansyah, @pyk, Angularjs apps, bootstrap">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <meta itemprop="name" content="too old">
+    <meta itemprop="description" content="Simple apps to measure how old are you now with precisly. built using AngularJS aand Bootstrap">
+
+    <meta name="author" content="Bayu Aldi Yansyah, bayualdiyansyah@gmail.com">
+    <meta name="copyright" content="Bayu Aldi Yansyah">
+    <link rel="author" href="https://plus.google.com/+BayuAldiYansyah?rel=author">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="atpyk.org">
+    <meta name="twitter:site" content="@peeyek"> 
+    <meta name="twitter:site:id" content="285522902">
+    <meta name="twitter:creator" content="@peeyek">
+    <meta name="twitter:creator:id" content="285522902">
+    <meta name="twitter:title" content="too old">
+    <meta name="twitter:description" content="Simple apps to measure how old are you now with precisly. built using AngularJS aand Bootstrap">
+    <meta name="twitter:image" content="assets/images/cover-front.png">
+
+
+    <meta property="og:title" content="too old">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://atpyk.org/too-old">
+    <meta property="og:image" content="assets/images/cover-front.png">
+    <meta property="og:description" content="Simple apps to measure how old are you now with precisly. built using AngularJS aand Bootstrap">
+    <meta property="article:published_time" content="2014-01-16 15:46:00 UTC">
+    <meta property="article:author" content="Bayu Aldi Yansyah">
+    <meta property="article:tag" content="">
+    <meta property="og:site_name" content="too old">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+    <![endif] -->
+    
     <link href="assets/styles/main.css" rel="stylesheet" media="screen">
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/jquery/jquery.js"></script>
+    <script src="/bower_components/bootstrap/js/modal.js"></script>
   </head>
-  <body>
-    <h1> demo for toool <h1>
-    <h2>keren kan live reload? save langsung boom</h2>
-    <h2>less nya juga live reload :p</h2>
+  <body ng-controller="HitungMinggu">
+  <div class="container-wide remove-padding">
+    <header class="copyright">
+      <p>
+      <a href="http://atpyk.org">
+        <img class="logo" src="/assets/images/logo-pyk.png" alt="">
+      </a>
+      &copy; 2014
+          - dibuat dengan <a href="http://angularjs.org">AngularJS</a> dan <a href="http://getbootstrap.com">Bootstrap</a> oleh <a href="http://atpyk.org/about/">Bayu</a>. kirim <a href="mailto:bay@atpyk.org?subject=kritik dan saran buat project too old lo bay">kritik dan saran</a>
+      </p>
+    </header>
+  </div>
+  <div class="container hidden result-container">
+    <section class="result">
+      <h3>Ternyata, lo sudah menghabiskan waktu di dunia ini selama
+         {{ results.year }} tahun 
+         {{ results.month }} bulan
+         {{ results.week }} minggu
+         {{ results.day }} hari
+         {{ results.hour }} jam
+         {{ results.minute }} menit
+         {{ results.second }} detik looo.
+      </h3>
+      <p class="cari-tahu-lagi">
+        <a href="http://atpyk.org/too-old/">cari tahu lagi</a>
+      </p>
+    </section>
+  </div>
+
+  <div class="container calculator">
+    <header>
+      <h1>Sudah berapa lama gue hidup?</h1>
+    </header>
+    
+    <section>
+      <p>gue lahir pada:</p>
+      <p class="big">
+        <a href="#" data-toggle="modal" data-target="#changeDate">
+          {{date}}
+        </a>/
+        <a href="#" data-toggle="modal" data-target="#chooseMonth">
+          {{month.id}}
+        </a>/
+        <a href="#" data-toggle="modal" data-target="#changeYear">
+          {{ year }}
+        </a>
+      </p>
+      <span>* klik untuk mengganti tanggal, bulan dan tahun lahir</span>
+      <p class="cari-tahu"><a href="#" ng-click="showResult()">cari tahu</a></p>
+    </section>
+  </div>
+
+  <div class="modal fade" id="changeDate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="container">
+      <section>
+          <form parsley-validate parsley-show-errors>
+            <p class="change-date">
+            <input class="input-number" ng-model="date"/>
+            <a href="#" data-dismiss="modal"></a>
+            </p>
+          </form>
+      </section>
+    </div>
+  </div>
+
+  <div class="modal fade" id="chooseMonth" tabindex="-1" role="dialog" 
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="container">
+      <div class="row">
+          <a href="#" data-dismiss="modal"class="month"
+             ng-repeat="month in months" ng-click="chooseMonth($index)">
+            <p>{{ month.id }}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="changeYear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="container">
+      <section>
+        <p class="change-year">
+          <input type="text" ng-model="year">
+          <a href="#" data-dismiss="modal"></a>
+        </p>
+      </section>
+    </div>
+  </div>
+    
+    <p>
+    
+    </p>
+    <script>
+      /* 
+        Fakta penting nih:
+        1 minutes  = 60 seconds
+        1 hours    = 3 600 seconds
+        1 day      = 86 400 seconds
+        1 week     = 604 800 seconds
+        1 month    = 2 629 743.83 seconds
+        1 year     = 31 556 926 seconds
+      */
+      function HitungMinggu($scope) {
+        // default state
+        $scope.date = "07";
+        $scope.year = 1996;
+        $scope.results = {
+          year:"",
+          month:"",
+          week:"",
+          day:"",
+          hour:"",
+          minute:"",
+          second:""
+        };
+        $scope.showResult = function() {
+          $(".calculator").addClass("hidden");
+          $("html").addClass("change-bg");
+          $(".result-container").removeClass("hidden");
+          var dateBorn = new Date($scope.date + $scope.month.en + $scope.year);
+          var today   = new Date();
+          var seconds = (today - dateBorn)/1000;
+          $scope.calc(seconds);
+        };
+        
+        $scope.calc = function(seconds) {
+          var years = Math.floor(seconds/31556926)
+            , months = Math.floor((seconds%31556926)/2629743.83) 
+            , weeks = Math.floor(((seconds%31556926)%2629743.83)/604800) 
+            , days = Math.floor((((seconds%31556926)%2629743.83)%604800)/86400)
+            , hours = Math.floor(((((seconds%31556926)%2629743.83)%604800)%86400)/3600)
+            , minutes = Math.floor((((((seconds%31556926)%2629743.83)%604800)%86400)%3600)/60)
+            , seconds = (((((seconds%31556926)%2629743.83)%604800)%86400)%3600)%60;
+         
+         $scope.results.year = years;
+         $scope.results.month = months;
+         $scope.results.week = weeks;
+         $scope.results.day = days;
+         $scope.results.hour = hours;
+         $scope.results.minute = minutes;
+         $scope.results.second = seconds;
+        };
+        $scope.months = [
+          {en: "January",   id: "Januari"},
+          {en: "February",  id: "Februari"},
+          {en: "March",     id: "Maret"},
+          {en: "April",     id: "April"},
+          {en: "May",       id: "Mei"},
+          {en: "June",      id: "Juni"},
+          {en: "July",      id: "Juli"},
+          {en: "August",    id: "Agustus"},
+          {en: "September", id: "September"},
+          {en: "October",   id: "Oktober"},
+          {en: "November",  id: "November"},
+          {en: "December",  id: "Desember"}
+        ];
+        $scope.month = $scope.months[9];
+        $scope.chooseMonth = function(index){
+          $scope.month = $scope.months[index];
+        }
+      }
+
+    </script>
   </body>
 </html>
