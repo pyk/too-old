@@ -1,11 +1,11 @@
 {
-  "name": "berapaMingguGueHidup",
-  "version": "0.0.0",
-  "homepage": "https://github.com/pyk/toool",
+  "name": "too old",
+  "version": "0.9.0",
+  "homepage": "http://atpyk.org/too-old/",
   "authors": [
     "Bayu Aldi Yansyah <bayualdiyansyah@gmail.com>"
   ],
-  "description": "how much week you spend on your life",
+  "description": "Simple apps to measure how old are you now with precisly. built using AngularJS aand Bootstrap",
   "main": "index.html",
   "keywords": [
     "@pyk",
