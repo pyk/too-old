@@ -772,6 +772,10 @@ section p.big {
   border-radius: 4px;
 }
 
+section p.big > a {
+  cursor: pointer;
+}
+
 section p.cari-tahu {
   padding-top: 60px;
   font-size: 1.5em;
